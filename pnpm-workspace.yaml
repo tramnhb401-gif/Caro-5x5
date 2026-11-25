@@ -1,0 +1,6 @@
+packages:
+  - 'src/apps/*'
+  - 'src/services/*'
+  - 'lib/shared'
+allowBuilds:
+  '@parcel/watcher': true

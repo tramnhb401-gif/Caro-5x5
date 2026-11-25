@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: caro-app
+    runtime: node
+    plan: free
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter mobile exec expo export --platform web && pnpm --filter api build
+    startCommand: pnpm --filter api start:prod
+    healthCheckPath: /api/v1/health/ready
+    envVars:
+      - key: NODE_VERSION
+        value: 22.13.1
+      - key: SERVE_WEB
+        value: "true"
+      - key: EXPO_PUBLIC_API_URL
+        value: /
+      - key: MONGODB_URI
+        sync: false
