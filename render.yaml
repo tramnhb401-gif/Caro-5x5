@@ -3,7 +3,7 @@ services:
     name: caro-app
     runtime: node
     plan: free
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm --filter mobile exec expo export --platform web && pnpm --filter api build
+    buildCommand: npm install --global corepack@latest && corepack enable && pnpm install --frozen-lockfile && pnpm --filter mobile exec expo export --platform web && pnpm --filter api build
     startCommand: pnpm --filter api start:prod
     healthCheckPath: /api/v1/health/ready
     envVars:
